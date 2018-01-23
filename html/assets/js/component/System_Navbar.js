@@ -2,7 +2,9 @@ class System_Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeCategory: null,
+			activeCategory: {
+				id: null
+			},
 			categories: [],
 			user: null
 		};
@@ -106,7 +108,7 @@ class System_Navbar extends React.Component {
 									<a href={"index.html?cid="+x.id}>{x.name}</a>
 								</li>)}
 								{this.state.user != null &&
-									<li><a href="my.html">欢迎您，<strong>{this.state.user.nickname}</strong></a></li>
+									<li><a href={"my.html?cid="+this.state.activeCategory.id}>欢迎您，<strong>{this.state.user.nickname}</strong></a></li>
 								}
 								<div className="pull-right">
 									{this.state.user == null &&

@@ -1,5 +1,13 @@
-function fn_public_api(data, success) {
+function fn_raw_api(data, callback) {
 	$.post("http://47.104.17.187:8086/yy-vip-center-manager-api", JSON.stringify(data), function(resp){
+		if (typeof callback == 'function') {
+			callback(resp);
+		}
+	});
+}
+
+function fn_public_api(data, success) {
+	fn_raw_api(data, function(resp){
 		if (resp.code == 0) {
 			if (typeof success == 'function') {
 				success(resp);

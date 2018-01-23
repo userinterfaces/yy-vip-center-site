@@ -51,7 +51,7 @@ class User_Detail_Panel extends React.Component {
 			                <h3 style={{fontSize: "24px"}}>{this.state.data.nickname}<small style={{color: "red"}}>（{this.getReadableLevel()}）</small></h3>
 			                <h3 style={{fontSize: "48px"}}><small>余额</small><span style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(this.state.data.walletAmount)}</span></h3>
 			                <p style={{fontSize: "14px"}}>这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。</p>
-			                <a href="#" className="btn btn-danger" role="button">充值</a>
+			                <a href="#" className="btn btn-danger" role="button" data-toggle="modal" data-target="#user_Recharge_Modal">充值</a>
 					    </div>
 					</div>
 				</div>

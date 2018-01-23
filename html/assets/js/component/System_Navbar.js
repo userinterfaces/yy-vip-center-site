@@ -6,9 +6,13 @@ class System_Navbar extends React.Component {
 			categories: [],
 			user: null
 		};
+		this.activeCategoryCallbacks = {};
 		this.handleClickCategory = this.handleClickCategory.bind(this);
 		this.handleClickLogout = this.handleClickLogout.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
+		this.appendActiveCategoryCallback = this.appendActiveCategoryCallback.bind(this);
+		this.removeActiveCategoryCallback = this.removeActiveCategoryCallback.bind(this);
+		this.excuteActiveCategoryCallbacks = this.excuteActiveCategoryCallbacks.bind(this);
 	}
 
 	componentDidMount() {
@@ -17,7 +21,7 @@ class System_Navbar extends React.Component {
 
 	handleClickCategory(x) {
 		this.setState({activeCategory: x});
-		goods_Main_Panel.reload(x);
+		this.excuteActiveCategoryCallbacks(x);
 	}
 
 	handleClickLogout() {
@@ -53,7 +57,7 @@ class System_Navbar extends React.Component {
 				}
 			}
 			panel.setState({categories: resp.data, activeCategory: activeCategory});
-			goods_Main_Panel.reload(activeCategory);
+			panel.excuteActiveCategoryCallbacks(activeCategory);
 		});
 		
 		if (fn_get_token()) {
@@ -63,6 +67,22 @@ class System_Navbar extends React.Component {
 			}, function(resp){
 				panel.handleLogin(resp.data);
 			});
+		}
+	}
+
+	appendActiveCategoryCallback(name, callback) {
+		this.activeCategoryCallbacks[name] = callback;
+	}
+
+	removeActiveCategoryCallback(name) {
+		this.activeCategoryCallbacks[name] = null;
+	}
+
+	excuteActiveCategoryCallbacks(activeCategory) {
+		for (var i in this.activeCategoryCallbacks) {
+			if (typeof this.activeCategoryCallbacks[i] == 'function') {
+				this.activeCategoryCallbacks[i](activeCategory);
+			}
 		}
 	}
 

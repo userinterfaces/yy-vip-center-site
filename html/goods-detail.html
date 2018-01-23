@@ -21,7 +21,7 @@
     <script src="assets/js/modernizr.custom.js"></script>
        
 </head>
-<body>
+<body id="body">
 
 	<!-- Preloader -->
 
@@ -31,142 +31,22 @@
 
 	<!-- Navigation start -->
 
-	<header class="header">
-
-		<nav class="navbar navbar-custom" role="navigation">
-
-			<div class="container">
-
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html" style="font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';">YY大户业务网</a>
-				</div>
-
-				<div class="collapse navbar-collapse" id="custom-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="golf.html">分类一</a></li>
-                        <li><a href="parent-child.html">分类二</a></li>
-						<li><a href="wedding.html">分类三</a></li>
-						<li><a href="my.html">个人中心</a></li>
-						<div class="pull-right">
-							<a href="#" class="btn btn-primary" role="button" style="margin-top: 5px; margin-bottom: 5px; padding-top: 10px; padding-bottom: 10px; font-size: 14px; letter-spacing: 3px;">登录</a>
-							<a href="#" class="btn btn-warning" role="button" style="margin-top: 5px; margin-bottom: 5px; padding-top: 10px; padding-bottom: 10px; font-size: 14px; letter-spacing: 3px;">注册</a>
-						</div>
-					</ul>
-				</div>
-
-			</div><!-- .container -->
-
-		</nav>
-
-	</header>
-
+	<div id="system_Navbar_Container"></div>
+	
 	<!-- Navigation end -->
 
-	<section>
-		<div class="container" style="padding-top: 50px; padding-bottom: 50px;">
-			<div class="row">
-			    <div class="col-md-6">
-		        	<div class="row">
-		        		<img class="col-md-12" src="assets/images/kittens.jpg">
-		        	</div>
-		            <div class="row" style="padding-top: 20px; padding-bottom: 20px; border: ">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            	<img class="col-md-2" src="assets/images/kittens.jpg">
-		            </div>
-			    </div>
-			    <div class="col-md-6">
-	                <h3 style="font-size: 24px;">商品名称商品名称商品名称商品名称</h3>
-	                <h3 style="font-size: 24px;"><small style="color: red;">￥200.00</small></h3>
-	                <p style="font-size: 14px;">这里是商品描述。这里是商品描述。这里是商品描述。这里是商品描述。</p>
-	                <form class="form-horizontal" role="form">
-						<div class="form-group">
-							<label for="inputPassword" class="col-sm-2 control-label">备注字段1</label>
-							<div class="col-sm-10">
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 1
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword" class="col-sm-2 control-label">备注字段2</label>
-							<div class="col-sm-10">
-								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 选项 1
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 选项 2
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword" class="col-sm-2 control-label">备注字段3</label>
-							<div class="col-sm-10"><input type="text" class="form-control" id="inputPassword" placeholder="请输入备注字段3"></div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword" class="col-sm-2 control-label">备注字段4</label>
-							<div class="col-sm-10"><input type="text" class="form-control" id="inputPassword" placeholder="请输入备注字段4"></div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword" class="col-sm-2 control-label">备注字段5</label>
-							<div class="col-sm-10"><textarea class="form-control" rows="3" placeholder="请输入备注字段5"></textarea></div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">购买数量</label>
-							<div class="col-sm-10"><input type="number" min="0" class="form-control" id="inputPassword" placeholder="请输入购买数量" value="1" disabled="disabled"></div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label"></label>
-							<div class="col-sm-10"><a href="#" class="btn btn-danger" role="button">购买</a></div>
-						</div>
-					</form>
-			    </div>
-			</div><!-- .row -->
-		</div><!-- .contaier -->
-	</section>
+	<div id="goods_Detail_Panel_Container"></div>
 
 	<!-- Footer start -->
 
-	<footer id="footer">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-sm-12">
-
-					<p class="heart">
-                        大分県由布市湯布院町川北918-18　TEL.0977-84-2664
-                    </p>
-                    <p class="copyright">
-                        © 2018 YY大户业务网
-					</p>
-
-				</div>
-
-			</div><!-- .row -->
-		</div><!-- .container -->
-	</footer>
+	<div id="system_Footer_Container"></div>
 
 	<!-- Footer end -->
 
 	<!-- Scroll to top -->
 
 	<div class="scroll-up">
-		<a href="#category-desc"><i class="fa fa-angle-up"></i></a>
+		<a href="#body"><i class="fa fa-angle-up"></i></a>
 	</div>
     
     <!-- Scroll to top end-->
@@ -185,13 +65,21 @@
     <script src="assets/js/jquery.cbpQTRotator.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/stepper/jquery.fs.stepper.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("input[type=number]").stepper();
-			$(window).one("pronto.load", function() {
-				$("input[type=number]").stepper("destroy");
-			});
-		});
-	</script>
+    <script src="assets/js/jquery.cookie.min.js"></script>
+    <script src="assets/toastr/toastr.js"></script>
+	<script src="assets/js/fn.js"></script>
+	<script src="assets/js/fn-token.js"></script>
+	<script src="assets/js/json2.js"></script>
+
+	<!-- Babel -->
+	<script src="assets/react-15.4.2/react.min.js"></script>
+	<script src="assets/react-15.4.2/react-dom.min.js"></script>
+	<script src="assets/babel-standalone-6.22.1/babel.min.js"></script>
+	<script src="assets/js/component/System_Register_Modal.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Login_Modal.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Navbar.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Footer.js" type="text/babel"></script>
+	<script src="assets/js/component/Goods_Detail_Panel.js" type="text/babel"></script>
+
 </body>
 </html>

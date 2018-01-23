@@ -20,7 +20,7 @@
     
     <script src="assets/js/modernizr.custom.js"></script>
 </head>
-<body>
+<body id="body">
 
 	<!-- Preloader -->
 
@@ -30,41 +30,8 @@
 
 	<!-- Navigation start -->
 
-	<header class="header">
-
-		<nav class="navbar navbar-custom" role="navigation">
-
-			<div class="container">
-
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html" style="font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';">YY大户业务网</a>
-				</div>
-
-				<div class="collapse navbar-collapse" id="custom-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="golf.html">分类一</a></li>
-                        <li><a href="parent-child.html">分类二</a></li>
-						<li><a href="wedding.html">分类三</a></li>
-						<li><a href="my.html">个人中心</a></li>
-						<div class="pull-right">
-							<a href="#" class="btn btn-primary" role="button" style="margin-top: 5px; margin-bottom: 5px; padding-top: 10px; padding-bottom: 10px; font-size: 14px; letter-spacing: 3px;" data-toggle="modal" data-target="#loginModal">登录</a>
-							<a href="#" class="btn btn-warning" role="button" style="margin-top: 5px; margin-bottom: 5px; padding-top: 10px; padding-bottom: 10px; font-size: 14px; letter-spacing: 3px;" data-toggle="modal" data-target="#registerModal">注册</a>
-						</div>
-					</ul>
-				</div>
-
-			</div><!-- .container -->
-
-		</nav>
-
-	</header>
-
+	<div id="system_Navbar_Container"></div>
+	
 	<!-- Navigation end -->
 
 	<section>
@@ -93,107 +60,16 @@
 		</div><!-- .contaier -->
 	</section>
 
-	<!-- 登录模态框（Modal） -->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3>Login</h3>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
-							<label class="col-sm-3 control-label">手机号</label>
-							<div class="col-sm-7"><input type="text" class="form-control" placeholder="请输入手机号"></div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">验证码</label>
-							<div class="col-sm-7">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="请输入验证码">
-									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button">获取手机验证码</button>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"></label>
-							<div class="col-sm-7"><a href="#" class="btn btn-danger" role="button">登录</a></div>
-						</div>
-					</form>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
-	</div>
-
-	<!-- 注册模态框（Modal） -->
-	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3>Register</h3>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
-							<label class="col-sm-3 control-label">手机号</label>
-							<div class="col-sm-7"><input type="text" class="form-control" placeholder="请输入手机号"></div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">昵称</label>
-							<div class="col-sm-7"><input type="text" class="form-control" placeholder="请输入昵称"></div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">验证码</label>
-							<div class="col-sm-7">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="请输入验证码">
-									<span class="input-group-btn">
-										<button class="btn btn-primary" type="button">获取手机验证码</button>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"></label>
-							<div class="col-sm-7"><a href="#" class="btn btn-danger" role="button">注册</a></div>
-						</div>
-					</form>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
-	</div>
-
 	<!-- Footer start -->
 
-	<footer id="footer">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-sm-12">
-
-					<p class="heart">
-                        大分県由布市湯布院町川北918-18　TEL.0977-84-2664
-                    </p>
-                    <p class="copyright">
-                        © 2018 YY大户业务网
-					</p>
-
-				</div>
-
-			</div><!-- .row -->
-		</div><!-- .container -->
-	</footer>
+	<div id="system_Footer_Container"></div>
 
 	<!-- Footer end -->
 
 	<!-- Scroll to top -->
 
 	<div class="scroll-up">
-		<a href="#category-desc"><i class="fa fa-angle-up"></i></a>
+		<a href="#body"><i class="fa fa-angle-up"></i></a>
 	</div>
     
     <!-- Scroll to top end-->
@@ -212,13 +88,20 @@
     <script src="assets/js/jquery.cbpQTRotator.js"></script>
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/stepper/jquery.fs.stepper.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("input[type=number]").stepper();
-			$(window).one("pronto.load", function() {
-				$("input[type=number]").stepper("destroy");
-			});
-		});
-	</script>
+    <script src="assets/js/jquery.cookie.min.js"></script>
+    <script src="assets/toastr/toastr.js"></script>
+	<script src="assets/js/fn.js"></script>
+	<script src="assets/js/fn-token.js"></script>
+	<script src="assets/js/json2.js"></script>
+
+	<!-- Babel -->
+	<script src="assets/react-15.4.2/react.min.js"></script>
+	<script src="assets/react-15.4.2/react-dom.min.js"></script>
+	<script src="assets/babel-standalone-6.22.1/babel.min.js"></script>
+	<script src="assets/js/component/System_Register_Modal.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Login_Modal.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Navbar.js" type="text/babel"></script>
+	<script src="assets/js/component/System_Footer.js" type="text/babel"></script>
+
 </body>
 </html>

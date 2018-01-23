@@ -22,6 +22,13 @@ class Goods_Main_Panel extends React.Component {
 		this.loadMore = this.loadMore.bind(this);
 	}
 
+	componentDidMount() {
+		var panel = this;
+		system_Navbar.appendActiveCategoryCallback("goods_Main_Panel", function(activeCategory){
+			panel.reload(activeCategory);
+		});
+	}
+
 	reload(category) {
 		var panel = this;
 		fn_public_api({
@@ -78,11 +85,11 @@ class Goods_Main_Panel extends React.Component {
 							{this.state.data.map(x => 
 							    <div className="col-sm-6 col-md-3">
 							        <div className="thumbnail">
-							            <a href={"goods-detail.html?id="+x.id}><img src={this.getGoodsCoverImage(x)} /></a>
+							            <a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><img src={this.getGoodsCoverImage(x)} /></a>
 							            <div className="caption">
-							                <a href="goods-detail.html"><h3 style={{fontSize: "24px"}}>{x.name}<small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(x.price)}</small></h3></a>
+							                <a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><h3 style={{fontSize: "24px"}}>{x.name}<small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(x.price)}</small></h3></a>
 							                <p style={{fontSize: "14px"}}>{x.desc}</p>
-							                <p><a href="#" className="btn btn-info" role="button">购买</a></p>
+							                <p><a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id} className="btn btn-info" role="button">购买</a></p>
 							            </div>
 							        </div>
 							    </div>

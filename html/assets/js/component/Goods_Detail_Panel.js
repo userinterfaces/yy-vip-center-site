@@ -12,6 +12,7 @@ class Goods_Detail_Panel extends React.Component {
 		};
 		this.reload = this.reload.bind(this);
 		this.handleClickPicture = this.handleClickPicture.bind(this);
+		this.buy = this.buy.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,6 +32,15 @@ class Goods_Detail_Panel extends React.Component {
 
 	handleClickPicture(picture) {
 		this.setState({activePicture: picture});
+	}
+
+	buy() {
+		fn_api({
+			"apiName": "MixOrder_Buy_Api",
+			"goodsId": fn_url_args().id
+		}, function(resp){
+			window.location.href = "my.html?cid=" + fn_url_args().cid;
+		});
 	}
 
 	render() {
@@ -96,7 +106,7 @@ class Goods_Detail_Panel extends React.Component {
 								</div>
 								<div className="form-group">
 									<label className="col-sm-2 control-label"></label>
-									<div className="col-sm-10"><a href="#" className="btn btn-danger" role="button">购买</a></div>
+									<div className="col-sm-10"><a href="#" className="btn btn-danger" role="button" onClick={this.buy}>购买</a></div>
 								</div>
 							</form>
 					    </div>

@@ -34,7 +34,7 @@ class System_Navbar extends React.Component {
 		}, function(){
 			panel.setState({user: null});
 			fn_remove_token();
-			window.location.href = "login.html";
+			window.location.href = "index.html";
 		});
 	}
 

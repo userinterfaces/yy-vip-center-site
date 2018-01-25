@@ -1,5 +1,5 @@
 function fn_raw_api(data, callback) {
-	$.post("http://47.104.17.187:8086/yy-vip-center-manager-api", JSON.stringify(data), function(resp){
+	$.post("http://182.92.74.206:8086/yy-vip-center-site-api", JSON.stringify(data), function(resp){
 		if (typeof callback == 'function') {
 			callback(resp);
 		}

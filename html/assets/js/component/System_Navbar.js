@@ -29,7 +29,8 @@ class System_Navbar extends React.Component {
 	handleClickLogout() {
 		var panel = this;
 		fn_public_api({
-			"apiName": "System_Logout_Api"
+			"apiName": "System_Logout_Api",
+			"token": fn_get_token()
 		}, function(){
 			panel.setState({user: null});
 			fn_remove_token();
@@ -109,6 +110,9 @@ class System_Navbar extends React.Component {
 								</li>)}
 								{this.state.user != null &&
 									<li><a href={"my.html?cid="+this.state.activeCategory.id}>欢迎您，<strong>{this.state.user.nickname}</strong></a></li>
+								}
+								{this.state.user != null &&
+									<li onClick={this.handleClickLogout}><a href="#">退出</a></li>
 								}
 								<div className="pull-right">
 									{this.state.user == null &&

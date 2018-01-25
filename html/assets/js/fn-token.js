@@ -3,9 +3,9 @@ function fn_remove_token() {
 }
 
 function fn_set_token(token) {
-	$.cookie("token", token, { "expires": 30, "path": "/" });
+	$.cookie("yy_vip_center_site_token", token, { "expires": 30, "path": "/" });
 }
 
 function fn_get_token() {
-	return $.cookie("token");
+	return $.cookie("yy_vip_center_site_token");
 }

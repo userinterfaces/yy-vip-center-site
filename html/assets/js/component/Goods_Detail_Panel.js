@@ -46,7 +46,8 @@ class Goods_Detail_Panel extends React.Component {
 	}
 
 	buy() {
-		if (this.state.comment.channel == null) {
+		var commentTemplate = this.state.data.commentTemplate;
+		if ((commentTemplate == 1 || commentTemplate == 2 || commentTemplate == 3) && this.state.comment.channel == null) {
 			toastr.error("请填写频道号");
 			return;
 		}

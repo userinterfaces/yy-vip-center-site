@@ -31,9 +31,9 @@ class User_Detail_Panel extends React.Component {
 	getReadableLevel() {
 		switch (this.state.data.level) {
 			case 0: return "普通用户";
-			case 1: return "一级代理";
-			case 2: return "二级代理";
-			case 3: return "三级代理";
+			case 1: return "超级代理";
+			case 2: return "超级代理";
+			case 3: return "超级代理";
 		}
 	}
 
@@ -49,7 +49,7 @@ class User_Detail_Panel extends React.Component {
 					    </div>
 					    <div className="col-md-8 col-md-offset-1">
 			                <h3 style={{fontSize: "24px"}}>{this.state.data.nickname}<small style={{color: "red"}}>（{this.getReadableLevel()}）</small></h3>
-			                <h3 style={{fontSize: "48px"}}><small>余额</small><span style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(this.state.data.walletAmount)}</span></h3>
+			                <h3 style={{fontSize: "48px"}}><small>余额</small><span style={{color: "red"}}>￥{fn_fen2yuan_fixed(this.state.data.walletAmount)}</span></h3>
 			                <p style={{fontSize: "14px"}}>这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。</p>
 			                <a href="#" className="btn btn-danger" role="button" data-toggle="modal" data-target="#user_Recharge_Modal">充值</a>
 					    </div>

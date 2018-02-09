@@ -24,6 +24,7 @@ class Goods_Detail_Panel extends React.Component {
 		this.reload = this.reload.bind(this);
 		this.handleClickPicture = this.handleClickPicture.bind(this);
 		this.buy = this.buy.bind(this);
+		this.getPrice = this.getPrice.bind(this);
 	}
 
 	componentDidMount() {
@@ -77,56 +78,69 @@ class Goods_Detail_Panel extends React.Component {
 			<select className="form-control" onChange={e => this.handleChangeCommentTimes(e, index, field)}>
 				{field == "start" && <option value="">请选择开始时间</option>}
 				{field == "end" && <option value="">请选择结束时间</option>}
-				<option value="0:00">0点</option>
-				<option value="0:30">0点半</option>
-				<option value="1:00">1点</option>
-				<option value="1:30">1点半</option>
-				<option value="2:00">2点</option>
-				<option value="2:30">2点半</option>
-				<option value="3:00">3点</option>
-				<option value="3:30">3点半</option>
-				<option value="4:00">4点</option>
-				<option value="4:30">4点半</option>
-				<option value="5:00">5点</option>
-				<option value="5:30">5点半</option>
-				<option value="6:00">6点</option>
-				<option value="6:30">6点半</option>
-				<option value="7:00">7点</option>
-				<option value="7:30">7点半</option>
-				<option value="8:00">8点</option>
-				<option value="8:30">8点半</option>
-				<option value="9:00">9点</option>
-				<option value="9:30">9点半</option>
-				<option value="10:00">10点</option>
-				<option value="10:30">10点半</option>
-				<option value="11:00">11点</option>
-				<option value="11:30">11点半</option>
-				<option value="12:00">12点</option>
-				<option value="12:30">12点半</option>
-				<option value="13:00">13点</option>
-				<option value="13:30">13点半</option>
-				<option value="14:00">14点</option>
-				<option value="14:30">14点半</option>
-				<option value="15:00">15点</option>
-				<option value="15:30">15点半</option>
-				<option value="16:00">16点</option>
-				<option value="16:30">16点半</option>
-				<option value="17:00">17点</option>
-				<option value="17:30">17点半</option>
-				<option value="18:00">18点</option>
-				<option value="18:30">18点半</option>
-				<option value="19:00">19点</option>
-				<option value="19:30">19点半</option>
-				<option value="20:00">20点</option>
-				<option value="20:30">20点半</option>
-				<option value="21:00">21点</option>
-				<option value="21:30">21点半</option>
-				<option value="22:00">22点</option>
-				<option value="22:30">22点半</option>
-				<option value="23:00">23点</option>
-				<option value="23:30">23点半</option>
+				<option value="0:00">0:00</option>
+				<option value="0:30">0:30</option>
+				<option value="1:00">1:00</option>
+				<option value="1:30">1:30</option>
+				<option value="2:00">2:00</option>
+				<option value="2:30">2:30</option>
+				<option value="3:00">3:00</option>
+				<option value="3:30">3:30</option>
+				<option value="4:00">4:00</option>
+				<option value="4:30">4:30</option>
+				<option value="5:00">5:00</option>
+				<option value="5:30">5:30</option>
+				<option value="6:00">6:00</option>
+				<option value="6:30">6:30</option>
+				<option value="7:00">7:00</option>
+				<option value="7:30">7:30</option>
+				<option value="8:00">8:00</option>
+				<option value="8:30">8:30</option>
+				<option value="9:00">9:00</option>
+				<option value="9:30">9:30</option>
+				<option value="10:00">10:00</option>
+				<option value="10:30">10:30</option>
+				<option value="11:00">11:00</option>
+				<option value="11:30">11:30</option>
+				<option value="12:00">12:00</option>
+				<option value="12:30">12:30</option>
+				<option value="13:00">13:00</option>
+				<option value="13:30">13:30</option>
+				<option value="14:00">14:00</option>
+				<option value="14:30">14:30</option>
+				<option value="15:00">15:00</option>
+				<option value="15:30">15:30</option>
+				<option value="16:00">16:00</option>
+				<option value="16:30">16:30</option>
+				<option value="17:00">17:00</option>
+				<option value="17:30">17:30</option>
+				<option value="18:00">18:00</option>
+				<option value="18:30">18:30</option>
+				<option value="19:00">19:00</option>
+				<option value="19:30">19:30</option>
+				<option value="20:00">20:00</option>
+				<option value="20:30">20:30</option>
+				<option value="21:00">21:00</option>
+				<option value="21:30">21:30</option>
+				<option value="22:00">22:00</option>
+				<option value="22:30">22:30</option>
+				<option value="23:00">23:00</option>
+				<option value="23:30">23:30</option>
 			</select>
 		);
+	}
+
+	getPrice() {
+		if (system_Navbar.state.user) {
+			switch (system_Navbar.state.user.level) {
+				case 0: return this.state.data.price;
+				case 1: return this.state.data.priceLevel1;
+				case 2: return this.state.data.priceLevel2;
+				case 3: return this.state.data.priceLevel3;
+			}
+		} else {
+			return this.state.data.price;
+		}
 	}
 
 	render() {
@@ -146,7 +160,7 @@ class Goods_Detail_Panel extends React.Component {
 					    </div>
 					    <div className="col-md-6">
 			                <h3 style={{fontSize: "24px"}}>{this.state.data.name}</h3>
-			                <h3 style={{fontSize: "24px"}}><small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(this.state.data.price)}</small></h3>
+			                <h3 style={{fontSize: "24px"}}><small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(this.getPrice())}</small></h3>
 			                <p style={{fontSize: "14px"}}>{this.state.data.desc}</p>
 			                <form className="form-horizontal" role="form">
 								{(this.state.data.commentTemplate == 1 || this.state.data.commentTemplate == 2 || this.state.data.commentTemplate == 3) &&

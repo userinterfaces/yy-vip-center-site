@@ -159,64 +159,69 @@ class Goods_Detail_Panel extends React.Component {
 				            </div>
 					    </div>
 					    <div className="col-md-6">
+							{this.state.data.isSoldOut == 1 &&
+								<h3 style={{fontSize: "14px", color: "red"}}>已下架！若要购买请联系管理员</h3>
+							}
 			                <h3 style={{fontSize: "24px"}}>{this.state.data.name}</h3>
 			                <h3 style={{fontSize: "24px"}}><small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(this.getPrice())}</small></h3>
 			                <p style={{fontSize: "14px"}}>{this.state.data.desc}</p>
-			                <form className="form-horizontal" role="form">
-								{(this.state.data.commentTemplate == 1 || this.state.data.commentTemplate == 2 || this.state.data.commentTemplate == 3) &&
+							{this.state.data.isSoldOut == 0 &&
+				                <form className="form-horizontal" role="form">
+									{(this.state.data.commentTemplate == 1 || this.state.data.commentTemplate == 2 || this.state.data.commentTemplate == 3) &&
+										<div className="form-group">
+											<label for="inputPassword" className="col-sm-3 control-label">频道号</label>
+											<div className="col-sm-9"><input type="text" className="form-control" placeholder="请输入频道号" value={this.state.comment.channel} onChange={e => this.handleChangeComment(e, "channel")}/></div>
+										</div>
+									}
+									{this.state.data.commentTemplate == 1 &&
+										<div>
+											<div className="form-group">
+												<label for="inputPassword" className="col-sm-3 control-label">开播时间段1</label>
+												<div className="col-sm-4">{this.buildTimeOptions(0, "start")}</div>
+												<p className="col-sm-1 text-center">-</p>
+												<div className="col-sm-4">{this.buildTimeOptions(0, "end")}</div>
+											</div>
+											<div className="form-group">
+												<label for="inputPassword" className="col-sm-3 control-label">开播时间段2</label>
+												<div className="col-sm-4">{this.buildTimeOptions(1, "start")}</div>
+												<p className="col-sm-1 text-center">-</p>
+												<div className="col-sm-4">{this.buildTimeOptions(1, "end")}</div>
+											</div>
+											<div className="form-group">
+												<label for="inputPassword" className="col-sm-3 control-label">开播时间段3</label>
+												<div className="col-sm-4">{this.buildTimeOptions(2, "start")}</div>
+												<p className="col-sm-1 text-center">-</p>
+												<div className="col-sm-4">{this.buildTimeOptions(2, "end")}</div>
+											</div>
+										</div>
+									}
+									{this.state.data.commentTemplate == 3 &&
+										<div className="form-group">
+											<label for="inputPassword" className="col-sm-3 control-label">是否是卡天频道</label>
+											<div className="col-sm-9">
+												<label className="radio-inline">
+													<input type="radio" name="isKtChannel" value="1" checked={this.state.comment.isKtChannel == 1 ? true : false} onChange={e => this.handleChangeComment(e, "isKtChannel")} /> 是
+												</label>
+												<label className="radio-inline">
+													<input type="radio" name="isKtChannel" value="0" checked={this.state.comment.isKtChannel == 0 ? true : false} onChange={e => this.handleChangeComment(e, "isKtChannel")} /> 否
+												</label>
+											</div>
+										</div>
+									}
 									<div className="form-group">
-										<label for="inputPassword" className="col-sm-3 control-label">频道号</label>
-										<div className="col-sm-9"><input type="text" className="form-control" placeholder="请输入频道号" value={this.state.comment.channel} onChange={e => this.handleChangeComment(e, "channel")}/></div>
+										<label for="inputPassword" className="col-sm-3 control-label">备注</label>
+										<div className="col-sm-9"><textarea className="form-control" rows="3" placeholder="请输入备注" value={this.state.comment.basic} onChange={e => this.handleChangeComment(e, "basic")}></textarea></div>
 									</div>
-								}
-								{this.state.data.commentTemplate == 1 &&
-									<div>
-										<div className="form-group">
-											<label for="inputPassword" className="col-sm-3 control-label">开播时间段1</label>
-											<div className="col-sm-4">{this.buildTimeOptions(0, "start")}</div>
-											<p className="col-sm-1 text-center">-</p>
-											<div className="col-sm-4">{this.buildTimeOptions(0, "end")}</div>
-										</div>
-										<div className="form-group">
-											<label for="inputPassword" className="col-sm-3 control-label">开播时间段2</label>
-											<div className="col-sm-4">{this.buildTimeOptions(1, "start")}</div>
-											<p className="col-sm-1 text-center">-</p>
-											<div className="col-sm-4">{this.buildTimeOptions(1, "end")}</div>
-										</div>
-										<div className="form-group">
-											<label for="inputPassword" className="col-sm-3 control-label">开播时间段3</label>
-											<div className="col-sm-4">{this.buildTimeOptions(2, "start")}</div>
-											<p className="col-sm-1 text-center">-</p>
-											<div className="col-sm-4">{this.buildTimeOptions(2, "end")}</div>
-										</div>
-									</div>
-								}
-								{this.state.data.commentTemplate == 3 &&
 									<div className="form-group">
-										<label for="inputPassword" className="col-sm-3 control-label">是否是卡天频道</label>
-										<div className="col-sm-9">
-											<label className="radio-inline">
-												<input type="radio" name="isKtChannel" value="1" checked={this.state.comment.isKtChannel == 1 ? true : false} onChange={e => this.handleChangeComment(e, "isKtChannel")} /> 是
-											</label>
-											<label className="radio-inline">
-												<input type="radio" name="isKtChannel" value="0" checked={this.state.comment.isKtChannel == 0 ? true : false} onChange={e => this.handleChangeComment(e, "isKtChannel")} /> 否
-											</label>
-										</div>
+										<label className="col-sm-3 control-label">购买数量</label>
+										<div className="col-sm-9"><input type="number" min="0" className="form-control" placeholder="请输入购买数量" value="1" disabled="disabled" /></div>
 									</div>
-								}
-								<div className="form-group">
-									<label for="inputPassword" className="col-sm-3 control-label">备注</label>
-									<div className="col-sm-9"><textarea className="form-control" rows="3" placeholder="请输入备注" value={this.state.comment.basic} onChange={e => this.handleChangeComment(e, "basic")}></textarea></div>
-								</div>
-								<div className="form-group">
-									<label className="col-sm-3 control-label">购买数量</label>
-									<div className="col-sm-9"><input type="number" min="0" className="form-control" placeholder="请输入购买数量" value="1" disabled="disabled" /></div>
-								</div>
-								<div className="form-group">
-									<label className="col-sm-3 control-label"></label>
-									<div className="col-sm-9"><a href="#" className="btn btn-danger" role="button" onClick={this.buy}>购买</a></div>
-								</div>
-							</form>
+									<div className="form-group">
+										<label className="col-sm-3 control-label"></label>
+										<div className="col-sm-9"><a href="#" className="btn btn-danger" role="button" onClick={this.buy}>购买</a></div>
+									</div>
+								</form>
+							}
 					    </div>
 					</div>
 				</div>

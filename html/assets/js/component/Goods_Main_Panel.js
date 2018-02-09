@@ -85,7 +85,9 @@ class Goods_Main_Panel extends React.Component {
 							{this.state.data.map(x => 
 							    <div className="col-sm-6 col-md-3">
 							        <div className="thumbnail">
-							            <a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><img src={this.getGoodsCoverImage(x)} /></a>
+							        	<div style={{height: "250px", overflow: "hidden"}}>
+							        		<a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><img className="img-responsive" src={this.getGoodsCoverImage(x)}/></a>
+							        	</div>
 							            <div className="caption">
 							                <a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><h3 style={{fontSize: "24px"}}>{x.name}<small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(x.price)}</small></h3></a>
 							                <p style={{fontSize: "14px"}}>{x.desc}</p>

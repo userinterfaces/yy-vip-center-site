@@ -91,45 +91,45 @@ class System_Navbar extends React.Component {
 
 	render() {
 		return (
-			<header className="header">
-				<nav className="navbar navbar-custom" role="navigation">
-					<div className="container">
-						<div className="navbar-header">
-							<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-								<span className="sr-only">Toggle navigation</span>
-								<span className="icon-bar"></span>
-								<span className="icon-bar"></span>
-								<span className="icon-bar"></span>
-							</button>
-							<a className="navbar-brand" href="index.html" style={{fontFamily: "'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体'"}}>YY大户业务网</a>
-						</div>
-						<div className="collapse navbar-collapse" id="custom-collapse">
-							<ul className="nav navbar-nav navbar-right">
-								{this.state.categories.map(x => <li className={this.state.activeCategory.id == x.id ? "active" : ""} onClick={e => this.handleClickCategory(x)}>
-									<a href={"index.html?cid="+x.id}>{x.name}</a>
-								</li>)}
-								{this.state.user != null &&
-									<li><a href={"my.html?cid="+this.state.activeCategory.id}>欢迎您，<strong>{this.state.user.nickname}</strong></a></li>
-								}
-								{this.state.user != null &&
-									<li onClick={this.handleClickLogout}><a href="#">退出</a></li>
-								}
-								<div className="pull-right">
-									{this.state.user == null &&
-										<span>
-											<a href="#" className="btn btn-primary" role="button" style={{marginTop: "5px", marginBottom: "5px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}} data-toggle="modal" data-target="#system_Login_Modal">登录</a>
-											&nbsp;&nbsp;
-											<a href="#" className="btn btn-warning" role="button" style={{marginTop: "5px", marginBottom: "5px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}} data-toggle="modal" data-target="#system_Register_Modal">注册</a>
-										</span>
-									}
-								</div>
-							</ul>
-						</div>
-					</div>
-				</nav>
-		</header>
+			React.createElement("header", {className: "header"}, 
+				React.createElement("nav", {className: "navbar navbar-custom", role: "navigation"}, 
+					React.createElement("div", {className: "container"}, 
+						React.createElement("div", {className: "navbar-header"}, 
+							React.createElement("button", {type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#custom-collapse"}, 
+								React.createElement("span", {className: "sr-only"}, "Toggle navigation"), 
+								React.createElement("span", {className: "icon-bar"}), 
+								React.createElement("span", {className: "icon-bar"}), 
+								React.createElement("span", {className: "icon-bar"})
+							), 
+							React.createElement("a", {className: "navbar-brand", href: "index.html", style: {fontFamily: "'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体'"}}, "YY大户业务网")
+						), 
+						React.createElement("div", {className: "collapse navbar-collapse", id: "custom-collapse"}, 
+							React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
+								this.state.categories.map(x => React.createElement("li", {className: this.state.activeCategory.id == x.id ? "active" : "", onClick: e => this.handleClickCategory(x)}, 
+									React.createElement("a", {href: "index.html?cid="+x.id}, x.name)
+								)), 
+								this.state.user != null &&
+									React.createElement("li", null, React.createElement("a", {href: "my.html?cid="+this.state.activeCategory.id}, "欢迎您，", React.createElement("strong", null, this.state.user.nickname))), 
+								
+								this.state.user != null &&
+									React.createElement("li", {onClick: this.handleClickLogout}, React.createElement("a", {href: "#"}, "退出")), 
+								
+								React.createElement("div", {className: "pull-right"}, 
+									this.state.user == null &&
+										React.createElement("span", null, 
+											React.createElement("a", {href: "#", className: "btn btn-primary", role: "button", style: {marginTop: "5px", marginBottom: "5px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}, "data-toggle": "modal", "data-target": "#system_Login_Modal"}, "登录"), 
+											"  ", 
+											React.createElement("a", {href: "#", className: "btn btn-warning", role: "button", style: {marginTop: "5px", marginBottom: "5px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}, "data-toggle": "modal", "data-target": "#system_Register_Modal"}, "注册")
+										)
+									
+								)
+							)
+						)
+					)
+				)
+		)
 		);
 	}
 }
 
-var system_Navbar = ReactDOM.render(<System_Navbar />, document.getElementById("system_Navbar_Container"));
+var system_Navbar = ReactDOM.render(React.createElement(System_Navbar, null), document.getElementById("system_Navbar_Container"));

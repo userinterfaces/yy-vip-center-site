@@ -39,25 +39,25 @@ class User_Detail_Panel extends React.Component {
 
 	render() {
 		return (
-			<section>
-				<div className="container" style={{paddingTop: "50px", paddingBottom: "50px"}}>
-					<div className="row">
-					    <div className="col-md-2 col-md-offset-1">
-				        	<div className="row">
-				        		<img src="assets/images/man.svg" />
-				        	</div>
-					    </div>
-					    <div className="col-md-8 col-md-offset-1">
-			                <h3 style={{fontSize: "24px"}}>{this.state.data.nickname}<small style={{color: "red"}}>（{this.getReadableLevel()}）</small></h3>
-			                <h3 style={{fontSize: "48px"}}><small>余额</small><span style={{color: "red"}}>￥{fn_fen2yuan_fixed(this.state.data.walletAmount)}</span></h3>
-			                <p style={{fontSize: "14px"}}>这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。</p>
-			                <a href="#" className="btn btn-danger" role="button" data-toggle="modal" data-target="#user_Recharge_Modal">充值</a>
-					    </div>
-					</div>
-				</div>
-			</section>
+			React.createElement("section", null, 
+				React.createElement("div", {className: "container", style: {paddingTop: "50px", paddingBottom: "50px"}}, 
+					React.createElement("div", {className: "row"}, 
+					    React.createElement("div", {className: "col-md-2 col-md-offset-1"}, 
+				        	React.createElement("div", {className: "row"}, 
+				        		React.createElement("img", {src: "assets/images/man.svg"})
+				        	)
+					    ), 
+					    React.createElement("div", {className: "col-md-8 col-md-offset-1"}, 
+			                React.createElement("h3", {style: {fontSize: "24px"}}, this.state.data.nickname, React.createElement("small", {style: {color: "red"}}, "（", this.getReadableLevel(), "）")), 
+			                React.createElement("h3", {style: {fontSize: "48px"}}, React.createElement("small", null, "余额"), React.createElement("span", {style: {color: "red"}}, "￥", fn_fen2yuan_fixed(this.state.data.walletAmount))), 
+			                React.createElement("p", {style: {fontSize: "14px"}}, "这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。这里是欢迎信息。"), 
+			                React.createElement("a", {href: "#", className: "btn btn-danger", role: "button", "data-toggle": "modal", "data-target": "#user_Recharge_Modal"}, "充值")
+					    )
+					)
+				)
+			)
 		);
 	}
 }
 
-var user_Detail_Panel = ReactDOM.render(<User_Detail_Panel />, document.getElementById("user_Detail_Panel_Container"));
+var user_Detail_Panel = ReactDOM.render(React.createElement(User_Detail_Panel, null), document.getElementById("user_Detail_Panel_Container"));

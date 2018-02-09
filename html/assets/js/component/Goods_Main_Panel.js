@@ -64,57 +64,57 @@ class Goods_Main_Panel extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<section id="category-desc">
-					<div className="container" style={{paddingTop: "100px"}}>
-						<div className="row">
-							<div className="col-sm-6 col-sm-offset-3">
-								<div className="pfblock-header wow fadeInUp">
-									<h2 className="pfblock-title">{this.state.category.name}</h2>
-									<div className="pfblock-subtitle">
-										{this.state.category.desc}
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section>
-					<div className="container" style={{paddingTop: "100px", paddingBottom: "100px"}}>
-						<div className="row">
-							{this.state.data.map(x => 
-							    <div className="col-sm-6 col-md-3">
-							        <div className="thumbnail">
-							        	<div style={{height: "250px", overflow: "hidden"}}>
-							        		<a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><img className="img-responsive" src={this.getGoodsCoverImage(x)}/></a>
-							        	</div>
-							            <div className="caption">
-							                <a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id}><h3 style={{fontSize: "24px"}}>{x.name}<small style={{color: "red"}}>￥{fn_fen2yuan_in_thousands(x.price)}</small></h3></a>
-							                <p style={{fontSize: "14px"}}>{x.desc}</p>
-							                <p><a href={"goods-detail.html?id="+x.id+"&cid="+this.state.category.id} className="btn btn-info" role="button">购买</a></p>
-							            </div>
-							        </div>
-							    </div>
-							)}
-							{this.state.data.length == 0 &&
-								<p className="text-center">暂无数据</p>
-							}
-						</div>
-						{this.state.data.length > 0 && this.state.pager.isLastPage == 0 &&
-							<div className="row" style={{paddingTop: "100px"}}>
-								<div className="col-md-12">
-							        <a href="javascript:void(0);" className="btn btn-primary center-block" role="button" style={{width: "240px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}} onClick={this.loadMore}>加载更多</a>
-							    </div>
-							</div>
-						}
-						{this.state.pager.isLastPage == 1 &&
-							<p className="text-center">暂无更多数据</p>
-						}
-					</div>
-				</section>
-			</div>
+			React.createElement("div", null, 
+				React.createElement("section", {id: "category-desc"}, 
+					React.createElement("div", {className: "container", style: {paddingTop: "100px"}}, 
+						React.createElement("div", {className: "row"}, 
+							React.createElement("div", {className: "col-sm-6 col-sm-offset-3"}, 
+								React.createElement("div", {className: "pfblock-header wow fadeInUp"}, 
+									React.createElement("h2", {className: "pfblock-title"}, this.state.category.name), 
+									React.createElement("div", {className: "pfblock-subtitle"}, 
+										this.state.category.desc
+									)
+								)
+							)
+						)
+					)
+				), 
+				React.createElement("section", null, 
+					React.createElement("div", {className: "container", style: {paddingTop: "100px", paddingBottom: "100px"}}, 
+						React.createElement("div", {className: "row"}, 
+							this.state.data.map(x => 
+							    React.createElement("div", {className: "col-sm-6 col-md-3"}, 
+							        React.createElement("div", {className: "thumbnail"}, 
+							        	React.createElement("div", {style: {height: "250px", overflow: "hidden"}}, 
+							        		React.createElement("a", {href: "goods-detail.html?id="+x.id+"&cid="+this.state.category.id}, React.createElement("img", {className: "img-responsive", src: this.getGoodsCoverImage(x)}))
+							        	), 
+							            React.createElement("div", {className: "caption"}, 
+							                React.createElement("a", {href: "goods-detail.html?id="+x.id+"&cid="+this.state.category.id}, React.createElement("h3", {style: {fontSize: "24px"}}, x.name, React.createElement("small", {style: {color: "red"}}, "￥", fn_fen2yuan_in_thousands(x.price)))), 
+							                React.createElement("p", {style: {fontSize: "14px"}}, x.desc), 
+							                React.createElement("p", null, React.createElement("a", {href: "goods-detail.html?id="+x.id+"&cid="+this.state.category.id, className: "btn btn-info", role: "button"}, "购买"))
+							            )
+							        )
+							    )
+							), 
+							this.state.data.length == 0 &&
+								React.createElement("p", {className: "text-center"}, "暂无数据")
+							
+						), 
+						this.state.data.length > 0 && this.state.pager.isLastPage == 0 &&
+							React.createElement("div", {className: "row", style: {paddingTop: "100px"}}, 
+								React.createElement("div", {className: "col-md-12"}, 
+							        React.createElement("a", {href: "javascript:void(0);", className: "btn btn-primary center-block", role: "button", style: {width: "240px", paddingTop: "10px", paddingBottom: "10px", fontSize: "14px", letterSpacing: "3px"}, onClick: this.loadMore}, "加载更多")
+							    )
+							), 
+						
+						this.state.pager.isLastPage == 1 &&
+							React.createElement("p", {className: "text-center"}, "暂无更多数据")
+						
+					)
+				)
+			)
 		);
 	}
 }
 
-var goods_Main_Panel = ReactDOM.render(<Goods_Main_Panel />, document.getElementById("goods_Main_Panel_Container"));
+var goods_Main_Panel = ReactDOM.render(React.createElement(Goods_Main_Panel, null), document.getElementById("goods_Main_Panel_Container"));

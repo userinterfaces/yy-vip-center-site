@@ -4,8 +4,11 @@ class System_Register_Modal extends React.Component {
 		this.state = {
 			phone: null,
 			nickname: null,
-			verificationCode: null
+			verificationCode: null,
+			buttonTextClickSendVerificationCode: "获取手机验证码",
+			buttonIsDisabledClickSendVerificationCode: false
 		};
+		this.handleClickSendVerificationCode = this.handleClickSendVerificationCode.bind(this);
 		this.handleClickSubmit = this.handleClickSubmit.bind(this);
 	}
 
@@ -15,10 +18,35 @@ class System_Register_Modal extends React.Component {
 		});
 	}
 
+	componentWillUnmount() {
+		this.timer && clearInterval(this.timer);
+	}
+
 	handleChange(e, field) {
 		var state = this.state;
 		state[field] = e.target.value;
 		this.setState(state);
+	}
+
+	handleClickSendVerificationCode() {
+		var modal = this;
+		fn_public_api({
+			"apiName": "System_SendVerificationCode_Api",
+			"phone": this.state.phone
+		}, function(resp){
+			modal.timerTickCount = 60;
+			modal.timer && clearInterval(modal.timer);
+			modal.timer = setInterval(
+				() => {
+					modal.setState({buttonTextClickSendVerificationCode: modal.timerTickCount + "s后再次获取", buttonIsDisabledClickSendVerificationCode: true});
+					if (--modal.timerTickCount == 0) {
+						modal.timer && clearInterval(modal.timer);
+						modal.setState({buttonTextClickSendVerificationCode: "获取手机验证码", buttonIsDisabledClickSendVerificationCode: false});
+					}
+				},
+				1000
+			);
+		});
 	}
 
 	handleClickSubmit() {
@@ -72,7 +100,7 @@ class System_Register_Modal extends React.Component {
 										<div className="input-group">
 											<input type="text" className="form-control" placeholder="请输入验证码" value={this.state.verificationCode} onChange={e => this.handleChange(e, "verificationCode")} />
 											<span className="input-group-btn">
-												<button className="btn btn-primary" type="button">获取手机验证码</button>
+												<button className="btn btn-primary" type="button" disabled={this.state.buttonIsDisabledClickSendVerificationCode} onClick={this.handleClickSendVerificationCode}>{this.state.buttonTextClickSendVerificationCode}</button>
 											</span>
 										</div>
 									</div>

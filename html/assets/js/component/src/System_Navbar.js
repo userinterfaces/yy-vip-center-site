@@ -6,7 +6,8 @@ class System_Navbar extends React.Component {
 				id: null
 			},
 			categories: [],
-			user: null
+			user: null,
+			activeCategoryTicket: false
 		};
 		this.activeCategoryCallbacks = {};
 		this.handleClickCategory = this.handleClickCategory.bind(this);
@@ -50,17 +51,20 @@ class System_Navbar extends React.Component {
 			"pageIndex": 0,
 			"pageSize": 15
 		}, function(resp){
-			var activeCategory = resp.data[0];
-			var categoryId = fn_url_args().cid;
-			if (categoryId) {
-				for (var i = 0; i < resp.data.length; i++) {
-					if (categoryId == resp.data[i].id) {
-						activeCategory = resp.data[i];
+			panel.setState({categories: resp.data});
+			if (location.pathname.endsWith("/index.html")) {
+				var activeCategory = resp.data[0];
+				var categoryId = fn_url_args().cid;
+				if (categoryId) {
+					for (var i = 0; i < resp.data.length; i++) {
+						if (categoryId == resp.data[i].id) {
+							activeCategory = resp.data[i];
+						}
 					}
 				}
+				panel.setState({categories: resp.data, activeCategory: activeCategory});
+				panel.excuteActiveCategoryCallbacks(activeCategory);
 			}
-			panel.setState({categories: resp.data, activeCategory: activeCategory});
-			panel.excuteActiveCategoryCallbacks(activeCategory);
 		});
 		
 		if (fn_get_token()) {
@@ -105,9 +109,12 @@ class System_Navbar extends React.Component {
 						</div>
 						<div className="collapse navbar-collapse" id="custom-collapse">
 							<ul className="nav navbar-nav navbar-right">
-								{this.state.categories.map(x => <li className={this.state.activeCategory.id == x.id ? "active" : ""} onClick={e => this.handleClickCategory(x)}>
+								{this.state.categories.map(x => <li className={!this.state.activeCategoryTicket && this.state.activeCategory.id == x.id ? "active" : ""} onClick={e => this.handleClickCategory(x)}>
 									<a href={"index.html?cid="+x.id}>{x.name}</a>
 								</li>)}
+								<li className={this.state.activeCategoryTicket ? "active" : ""}>
+									<a href="ticket-index.html">卡密商品</a>
+								</li>
 								{this.state.user != null &&
 									<li><a href={"my.html?cid="+this.state.activeCategory.id}>欢迎您，<strong>{this.state.user.nickname}</strong></a></li>
 								}

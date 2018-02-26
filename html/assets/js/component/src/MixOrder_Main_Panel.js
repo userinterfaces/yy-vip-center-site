@@ -60,6 +60,15 @@ class MixOrder_Main_Panel extends React.Component {
 		this.reload(this.state.pager.pageIndex + 1, 15);
 	}
 
+	handleClickQueryTickets(mixOrder) {
+		fn_api({
+			"apiName": "MixOrder_QueryTickets_Api",
+			"orderId": mixOrder.id
+		}, function(resp){
+			mixOrder_ShowTickets_Modal.show({tickets: resp.data});
+		});
+	}
+
 	handleClickRefundRequest(mixOrder) {
 		var panel = this;
 		fn_api({
@@ -71,6 +80,13 @@ class MixOrder_Main_Panel extends React.Component {
 	}
 
 	buildReadableComment(mixOrder) {
+		if (mixOrder.isTicketGoodsOrder == 1){
+			return (
+				<div>
+					<span>卡密订单</span>
+				</div>
+			);
+		}
 		var template = mixOrder.goodsCommentTemplate;
 		var comment = JSON.parse(mixOrder.comment);
 		if (template == 0) {
@@ -138,24 +154,32 @@ class MixOrder_Main_Panel extends React.Component {
 										</thead>
 										<tbody>
 											{this.state.data.map((x) => <tr>
-												<td>{x.id}</td>
+												<td>
+													{x.id}
+													{x.isTicketGoodsOrder == 1 &&
+														<span>
+															&nbsp;&nbsp;
+															<button className="btn btn-warning btn-sm" onClick={e => this.handleClickQueryTickets(x)}> 提取卡密</button>
+														</span>
+													}
+												</td>
 												<td>{fn_fen2yuan_in_thousands(x.orderAmount)}</td>
 												<td>{x.goodsName}</td>
 												<td>{this.buildReadableComment(x)}</td>
 												<td>
-													{x.isDispose == 1 &&
+													{x.isTicketGoodsOrder == 0 && x.isDispose == 1 &&
 														<span className="label label-default">已处理</span>
 													}
-													{x.isDispose == 0 &&
+													{x.isTicketGoodsOrder == 0 && x.isDispose == 0 &&
 														<span className="label label-success">未处理</span>
 													}
-													{x.refundRequestStatus == 1 &&
+													{x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 1 &&
 														<span className="label label-danger">退货中</span>
 													}
-													{x.refundRequestStatus == 2 &&
+													{x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 2 &&
 														<span className="label label-info">已退货</span>
 													}
-													{x.refundRequestStatus == 3 &&
+													{x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 3 &&
 														<span className="label label-warning">退货被拒绝</span>
 													}
 												</td>

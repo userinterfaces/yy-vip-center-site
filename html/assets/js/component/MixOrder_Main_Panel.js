@@ -60,6 +60,15 @@ class MixOrder_Main_Panel extends React.Component {
 		this.reload(this.state.pager.pageIndex + 1, 15);
 	}
 
+	handleClickQueryTickets(mixOrder) {
+		fn_api({
+			"apiName": "MixOrder_QueryTickets_Api",
+			"orderId": mixOrder.id
+		}, function(resp){
+			mixOrder_ShowTickets_Modal.show({tickets: resp.data});
+		});
+	}
+
 	handleClickRefundRequest(mixOrder) {
 		var panel = this;
 		fn_api({
@@ -71,6 +80,13 @@ class MixOrder_Main_Panel extends React.Component {
 	}
 
 	buildReadableComment(mixOrder) {
+		if (mixOrder.isTicketGoodsOrder == 1){
+			return (
+				React.createElement("div", null, 
+					React.createElement("span", null, "卡密订单")
+				)
+			);
+		}
 		var template = mixOrder.goodsCommentTemplate;
 		var comment = JSON.parse(mixOrder.comment);
 		if (template == 0) {
@@ -138,24 +154,32 @@ class MixOrder_Main_Panel extends React.Component {
 										), 
 										React.createElement("tbody", null, 
 											this.state.data.map((x) => React.createElement("tr", null, 
-												React.createElement("td", null, x.id), 
+												React.createElement("td", null, 
+													x.id, 
+													x.isTicketGoodsOrder == 1 &&
+														React.createElement("span", null, 
+															"  ", 
+															React.createElement("button", {className: "btn btn-warning btn-sm", onClick: e => this.handleClickQueryTickets(x)}, " 提取卡密")
+														)
+													
+												), 
 												React.createElement("td", null, fn_fen2yuan_in_thousands(x.orderAmount)), 
 												React.createElement("td", null, x.goodsName), 
 												React.createElement("td", null, this.buildReadableComment(x)), 
 												React.createElement("td", null, 
-													x.isDispose == 1 &&
+													x.isTicketGoodsOrder == 0 && x.isDispose == 1 &&
 														React.createElement("span", {className: "label label-default"}, "已处理"), 
 													
-													x.isDispose == 0 &&
+													x.isTicketGoodsOrder == 0 && x.isDispose == 0 &&
 														React.createElement("span", {className: "label label-success"}, "未处理"), 
 													
-													x.refundRequestStatus == 1 &&
+													x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 1 &&
 														React.createElement("span", {className: "label label-danger"}, "退货中"), 
 													
-													x.refundRequestStatus == 2 &&
+													x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 2 &&
 														React.createElement("span", {className: "label label-info"}, "已退货"), 
 													
-													x.refundRequestStatus == 3 &&
+													x.isTicketGoodsOrder == 0 && x.refundRequestStatus == 3 &&
 														React.createElement("span", {className: "label label-warning"}, "退货被拒绝")
 													
 												), 
